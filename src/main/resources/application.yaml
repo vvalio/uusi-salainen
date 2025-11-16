@@ -1,0 +1,16 @@
+# Common properties for all profiles.
+spring:
+  application:
+    name: salainen
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/salainen-users
+          jwk-set-uri: "http://localhost:8080/realms/salainen-users/protocol/openid-connect/certs"
+server:
+  error:
+    include-message: always
+auth:
+  client-id: salainen_app
+
