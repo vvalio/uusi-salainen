@@ -13,11 +13,13 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * Interface definition for the user-part of Christmas API.
  */
+@RequestMapping("/christmas")
 @SecurityRequirement(name = "bearerAuth")
 public interface ChristmasUserApi {
     @GetMapping("/current")

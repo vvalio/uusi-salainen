@@ -56,6 +56,28 @@
                 <constraints nullable="false"/>
             </column>
         </createTable>
+
+        <createTable tableName="registration_link">
+            <column name="created_at" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+
+            <column name="modified_at" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="used" type="boolean">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="slug" type="char(50)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+        </createTable>
     </changeSet>
 
 </databaseChangeLog>
