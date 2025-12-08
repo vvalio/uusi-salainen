@@ -16,6 +16,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 abstract class Base {
     @Id
     @GeneratedValue
+    @Column(name = "id")
     protected Long id;
 
     @CreationTimestamp

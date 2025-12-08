@@ -1,0 +1,37 @@
+# This is the dev compose; that means that this file does NOT contain an image for salainen. Use staging compose instead
+# if you wish to run locally with docker.
+services:
+  database:
+    image: mariadb:11.8-noble # ubuntu for easier debug
+    healthcheck:
+      test: [ "CMD", "healthcheck.sh", "--connect", "--innodb_initialized" ]
+      start_period: 10s
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    env_file:
+      - .env
+    ports:
+      - "3306:3306"
+    volumes:
+      - database-v:/var/lib/mysql
+
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:26.1.0
+    env_file:
+      - .env
+    environment:
+      KC_DB: mariadb
+      KC_DB_URL_HOST: database
+    command: start-dev
+    ports:
+      - "8080:8080"
+    depends_on:
+      database:
+        condition: service_healthy
+    restart: unless-stopped
+
+
+volumes:
+  database-v:

@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Configuration;
         ),
         servers = {
                 @Server(url = "http://localhost:9000/", description = "Development environment"),
-                @Server(url = "https://dev-api.salainen.valiov.dev/dev", description = "Development server"),
+                @Server(url = "https://stag-api.salainen.valiov.dev/dev", description = "Staging server"),
                 @Server(url = "https://prod-api.salainen.valiov.dev/v0", description = "Default production server")
         }
 )

@@ -6,4 +6,9 @@ spring:
     driverClassName: org.mariadb.jdbc.Driver
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
+springdoc:
+  api-docs:
+    enabled: false
+  swagger-ui:
+    enabled: false

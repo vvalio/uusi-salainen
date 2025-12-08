@@ -1,16 +1,30 @@
 # Common properties for all profiles.
 spring:
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog/db.changelog-master.xml
   application:
     name: salainen
   security:
     oauth2:
+      client:
+        registration:
+          keycloak:
+            provider: salainen-kc
+            authorization-grant-type: authorization_code
+            client-id: ${KC_CLIENT_ID}
+            client-secret: ${KC_CLIENT_SECRET}
+            scope: ${KC_CLIENT_SCOPES}
+        provider:
+          salainen-kc:
+            issuer-uri: ${KC_PROTO}://${KC_HOST}/realms/${KC_REALM}
       resourceserver:
         jwt:
-          issuer-uri: http://localhost:8080/realms/salainen-users
-          jwk-set-uri: "http://localhost:8080/realms/salainen-users/protocol/openid-connect/certs"
+          issuer-uri: ${KC_PROTO}://${KC_HOST}/realms/${KC_REALM}
+          jwk-set-uri: ${KC_PROTO}://${KC_HOST}/realms/${KC_REALM}/protocol/openid-connect/certs
 server:
   error:
     include-message: always
 auth:
-  client-id: salainen_app
+  client-id: ${KC_CLIENT_ID}
 
