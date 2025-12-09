@@ -5,6 +5,7 @@ import dev.valiov.web.salainen.entity.RegistrationLink;
 import dev.valiov.web.salainen.repository.RegistrationLinkRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Random;
@@ -14,6 +15,7 @@ import java.util.stream.IntStream;
 /**
  * Service layer for registration links.
  */
+@Service
 public class RegistrationLinkService extends AbstractService {
     private static final char[] slugChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_".toCharArray();
 
