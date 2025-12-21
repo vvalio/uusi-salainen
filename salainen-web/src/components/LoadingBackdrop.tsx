@@ -1,4 +1,7 @@
-import { Backdrop, Grid, CircularProgress, Typography } from '@mui/material';
+import Backdrop from '@mui/material/Backdrop';
+import Grid from '@mui/material/Grid';
+import CircularProgress from '@mui/material/CircularProgress';
+import Typography from '@mui/material/Typography';
 import { t } from 'i18next';
 
 /**

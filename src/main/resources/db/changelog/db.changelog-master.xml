@@ -18,7 +18,7 @@
                 <constraints nullable="false"/>
             </column>
 
-            <column name="year" type="int">
+            <column name="christmas_year" type="int">
                 <constraints nullable="false" unique="true"/>
             </column>
 

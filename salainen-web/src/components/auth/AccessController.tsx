@@ -39,7 +39,7 @@ const AccessController: React.FC<AccessControllerProps> = ({
   return (
     <>
       <LoadingBackdrop open={auth.isLoading} />
-      {allowed ? children : fallbackComponent}
+      {auth.isLoading ? <></> : allowed ? children : fallbackComponent}
     </>
   );
 };

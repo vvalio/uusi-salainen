@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.core.env.Environment;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -74,11 +75,12 @@ public class AuthConfig {
                 requests.requestMatchers("/v3/api-docs/**").permitAll();
                 requests.requestMatchers("/h2-console/**").permitAll();
 
-                log.warn("HOX! Running in development mode, CSRF and X-Frame-Options DISABLED!");
+                log.warn("HOX! Running in development mode: CORS, CSRF and X-Frame-Options DISABLED!");
 
                 // This is why it's dangerous to run on dev mode, but H2 console won't work otherwise...
                 // Could make it only /h2-console/** though
                 try {
+                    http.cors(Customizer.withDefaults());
                     http.csrf(AbstractHttpConfigurer::disable);
                     http.headers(headers -> {
                         headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable);

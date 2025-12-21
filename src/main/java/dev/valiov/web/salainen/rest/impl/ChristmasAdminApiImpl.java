@@ -6,15 +6,14 @@ import dev.valiov.web.salainen.service.ChristmasService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import java.time.LocalDate;
 import java.util.List;
 
 @RestController
 @RequestMapping("/christmas")
+@CrossOrigin("http://localhost:5000")
 @PreAuthorize("hasAnyAuthority('salainen-admin')")
 public class ChristmasAdminApiImpl implements ChristmasAdminApi {
     @Autowired

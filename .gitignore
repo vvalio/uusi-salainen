@@ -34,3 +34,6 @@ build/
 
 **/.env
 dev.env
+dist
+
+keycloak-ui
